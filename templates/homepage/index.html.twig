@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{#
+	liste des balises twig
+		{# commentaire # }
+		{% instructions et traitements (boucle, conditions,...) %}
+		{{ affichage d'une donnée }}
+#}
+
+{#
+	afficher les données envoyées par le contrôleur :
+		récupération de la clé envoyée par render
+#}
+{% block body %}
+    <div id="my_carousel" class="carousel slide" data-ride="carousel">
+        <!-- Bulles -->
+        <ol class="carousel-indicators">G
+            <li data-target="#my_carousel" data-slide-to="2"></li>
+        </ol>
+        <!-- Slides -->
+        <div class="carousel-inner">
+        {% for article in articles %}
+            <!-- Page 3 -->
+            <div class="item">
+                <div class="carousel-page">
+                    <img src={{ asset('img/article/' ~ article.image) }} class="img-responsive" style="margin:0px auto;max-height:100%;"  />
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <!-- Contrôles -->
+        <a class="left carousel-control" href="#my_carousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#my_carousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+
+            {%  include '_inc/flash.messages.html.twig' %}
+{% endblock %}
+

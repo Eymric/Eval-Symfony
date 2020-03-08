@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="row">
+		<div class="col">
+			<h1>Gestion des articles</h1>
+		</div>
+	</div>
+
+	{% include '_inc/flash.messages.html.twig' %}
+	<div class="row">
+		<p>
+			<a href="{{ url('admin.article.form')  }}" class="btn btn-primary">Ajouter</a>
+		</p>
+		<table class="table table-striped">
+			<tr>
+				<th>Image</th>
+				<th>Nom</th>
+				<th>Continent</th>
+				<th></th>
+			</tr>
+			{% for article in results %}
+				<tr>
+					<td>
+						<img src="{{ asset('img/article/' ~ article.image) }}" class="img-fluid w-25" alt="">
+					</td>
+					<td>{{ article.name }}</td>
+					<td>{{ article.continent.name }}</td>
+					<td>
+						<a href="{{ url('admin.article.form.update', {id: article.id}) }}" class="btn btn-warning">Modifier</a>
+						<a href="{{ url('admin.article.delete', {id: article.id}) }}" class="btn btn-danger">Supprimer</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
+{% endblock %}
+
+
+
+
+
+
+

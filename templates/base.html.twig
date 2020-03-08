@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Nos voyages!{% endblock %}</title>
+    {#
+        importer le CSS compilé par webpack(composant encore)
+        app : le nom de l'entrée est contenue dans webpack.config.js : addEntry(...)
+    #}
+    {{ encore_entry_link_tags('app') }}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    {% endblock %}
+</head>
+<body>
+{#
+    mise en page:
+        les templates parents sont stockés à la racine du dossier templates
+        les templates enfants sont stockés dans des dossiers du dossier templates
+    principales instructions de mise en page
+        extends: héritage entre deux templates
+        block: zone vide à remplir ou pas dans un template enfant
+        include: inclusion de template twig
+#}
+{% include '_inc/nav.html.twig' %}
+
+<div class="container my-3">
+    {% block body %}{% endblock %}
+</div>
+
+{#
+    importer le JS compilé par webpack(composant encore)
+    app : le nom de l'entrée est contenue dans webpack.config.js : addEntry(...)
+#}
+{{ encore_entry_script_tags('app') }}
+
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>{% endblock %}
+<div class="footer">
+{% block footer %}
+{% include '_inc/nav.html.twig' %}
+{% endblock %}
+</div>
+</body>
+</html>

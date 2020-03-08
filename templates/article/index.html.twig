@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-xl ">
+            <h1>Découvertes</h1>
+        </div>
+    </div>
+
+    {% for continent in continents %}
+            <h1>Continent : {{ continent.owner.name}}</h1>
+        <div class="row">
+        {% for article in continent.owner.articles %}
+                <div class="col-sm-3">
+                    <img src="{{ asset('img/article/' ~ article.image) }}" class="img-fluid" alt="">
+                    <h3>{{ article.name }} </h3>
+                    <p>
+                        <a href="{{ url('article.details', { slug: article.slug }) }}" class="btn btn-primary">Visualiser</a>
+                    </p>
+                </div>
+
+            {% endfor %}
+        </div>
+
+        {% endfor %}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{{ form_start(form, {attr: { novalidate: 'novalidate' }} ) }}
+    <p>
+        {{ form_label(form.name, "Nom:") }}
+        {{ form_widget(form.name) }}
+    </p>
+    <p>
+        {{ form_row(form.description) }}
+    </p>
+    <p>
+        {{ form_row(form.image) }}
+    </p>
+
+    <p>
+        <input type="submit" class="btn btn-info" value="Valider">
+    </p>
+
+
+{{ form_end(form) }}
+{% endblock %}
+
+
+
+
+
+
+

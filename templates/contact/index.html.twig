@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{%  block body %}
+    <div class="row">
+        <div class="col">
+            <h1>Contact</h1>
+
+            {{ form_start(form, { attr: { novalidate: 'novalidate' } }) }}
+            <p>
+                {{ form_label(form.firstname, 'Prénom:') }}
+                {{ form_widget(form.firstname,
+                    { attr:
+                        {
+                            placeholder: 'Saisissez votre prénom',
+                            autofocus: 'autofocus'
+                        }
+                    }
+                ) }}
+            </p>
+            <p>
+                {{ form_label(form.email, 'Email:') }}
+                {{ form_widget(form.email,
+                    { attr:
+                        {
+                            placeholder: 'Saisissez votre email'
+                        }
+                    }
+                ) }}
+            </p>
+            <p>
+                {{ form_label(form.message, 'Message:') }}
+                {{ form_widget(form.message,
+                    { attr:
+                        {
+                            placeholder: 'Votre message'
+                        }
+                    }
+                ) }}
+            </p>
+            <p>
+                <input type="submit" value="Valider" class="btn btn-primary">
+            </p>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{%  endblock %}
+
+
+
+
+
+
